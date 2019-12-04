@@ -65,6 +65,7 @@ updateHero (hero: Hero): Observable<any> {
     catchError(this.handleError<any>('updateHero'))
   );
 }
+
 httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
