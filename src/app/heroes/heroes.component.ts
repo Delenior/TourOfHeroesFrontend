@@ -4,7 +4,7 @@ import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
 
 @Component({
-  selector: 'app-heroes',
+  selector: 'app-heroes', //ezzel hivatkozunk az app.component.html-ben erre a componentre
   templateUrl: './heroes.component.html',
   styleUrls: ['./heroes.component.css']
 })
