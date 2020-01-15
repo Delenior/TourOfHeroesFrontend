@@ -3,7 +3,7 @@ import { Component, Input, OnInit } from '@angular/core'
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
-import { HeroService }  from '../hero.service';
+import { HeroService } from '../hero.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -24,11 +24,11 @@ export class HeroDetailComponent implements OnInit {
   }
 
   getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.heroService.getHero(id)
-      .subscribe(hero => this.hero = hero);
+    const id = this.route.snapshot.paramMap.get('id');
+    this.heroService.getHeroById(id)
+        .subscribe(hero => this.hero = hero);
   }
-  
+
   goBack(): void {
     this.location.back();
   }
