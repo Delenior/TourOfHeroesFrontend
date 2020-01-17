@@ -7,6 +7,7 @@ import { MessageService } from '../message.service';
   styleUrls: ['./messages.component.css']
 })
 export class MessagesComponent implements OnInit {
+  /** Ez a komponenst nem használom már, de ha kitörlöm összeomlik a rendszer */
 
   constructor(public messageService: MessageService) {}
 
