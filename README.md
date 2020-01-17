@@ -1,3 +1,8 @@
+# A hivatalos Angularos tutorial kicsit átalakítva igazi backenddel kiegészítve
+Megtalálható egy TourOfHeroesBackend repository-ban az alkalmazásnak a backendje, ezt Javaban írtam, springes, restes alkalmazás
+MongoDB-vel lehet összekötni, a backendben már benne van egy alapértelmezett kapcsolat, ahhoz hogy működjön, ahhoz viszon telepíteni kell a mongoDb-t a számítógépünkre. 
+Mongo [link](https://www.mongodb.com/download-center/community)
+
 # AngularTourOfHeroes
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 8.3.20.
