@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
 
 import {
-   debounceTime, distinctUntilChanged, switchMap
+   debounceTime, distinctUntilChanged, switchMap, filter
  } from 'rxjs/operators';
 
 import { Hero } from '../hero';
@@ -15,26 +15,39 @@ import { HeroService } from '../hero.service';
   styleUrls: [ './hero-search.component.css' ]
 })
 export class HeroSearchComponent implements OnInit {
-  heroes$: Observable<Hero[]>;
-  private searchTerms = new Subject<string>();
+  heroes: Hero[];
+  newHeroes: Hero[] = [];
+  ciklusvaltozo: number = 0;
+  feltetel: string;
 
   constructor(private heroService: HeroService) {}
 
-  // Push a search term into the observable stream.
-  search(term: string): void {
-    this.searchTerms.next(term);
-  }
-
   ngOnInit(): void {
-    /*this.heroes$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
+    this.getHeroes();
 
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
-
-      // switch to new search observable each time the term changes
-      //switchMap((term: string) => this.heroService.searchHeroes(term)),
-    );*/
   }
+
+  search(bemenet: string): void {
+    this.newHeroes = [];
+    this.newHeroes.length = 0;
+    this.ciklusvaltozo = 0;
+    if (bemenet === '') {
+    } else {
+      for (let hero of this.heroes) {
+        if (hero.name.toLowerCase().includes(bemenet.toLowerCase())) {
+            this.newHeroes[this.ciklusvaltozo] = hero;
+            this.ciklusvaltozo++;
+        }
+      }
+    }
+  }
+
+
+  getHeroes(): void {
+    this.heroService.getAllHeroes()
+        .subscribe(heroes => this.heroes = heroes,
+          );
+  }
+
+
 }

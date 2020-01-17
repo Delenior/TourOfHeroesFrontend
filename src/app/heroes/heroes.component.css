@@ -59,6 +59,7 @@ button {
   cursor: pointer;
   cursor: hand;
   font-family: Arial;
+  margin-left: 5px;
 }
 
 button:hover {

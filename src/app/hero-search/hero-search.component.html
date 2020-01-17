@@ -1,11 +1,25 @@
-<div id="search-component">
+<!--<div id="search-component">
     <h4><label for="search-box">Hero Search</label></h4>
-  
-    <input #searchBox id="search-box" (input)="search(searchBox.value)" />
-  
+
+    <input [(ngModel)]="asdasd" #searchBox id="search-box" (input)="random(asdasd)" />
+
     <ul class="search-result">
-      <li *ngFor="let hero of heroes$ | async" >
-        <a routerLink="/detail/{{hero.id}}">
+      <li *ngIf="oneHero.name" >
+        <a href="/detail/{{oneHero.id}}">
+          {{oneHero.name}}
+        </a>
+      </li>
+    </ul>
+  </div>-->
+
+  <div id="search-component">
+    <h4><label for="search-box">Hero Search</label></h4>
+
+    <input [(ngModel)]="feltetel" #searchBox id="search-box" (input)="search(feltetel)" />
+
+    <ul class="search-result">
+      <li *ngFor="let hero of newHeroes" >
+        <a href="/detail/{{hero.id}}">
           {{hero.name}}
         </a>
       </li>

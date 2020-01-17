@@ -13,7 +13,7 @@ import { Endpoints } from './util/endpoints';
 export class HeroService {
 
   constructor(private http: HttpClient,
-    private messageService: MessageService) { }
+              private messageService: MessageService) { }
 
     /** GET hero by id. Will 404 if id not found */
   getHeroById(id: string): Observable<Hero> {
@@ -23,7 +23,8 @@ export class HeroService {
   private log(message: string) {
     this.messageService.add(`HeroService: ${message}`);
   }
-  /**private heroesUrl = 'api/heroes';  // URL to web api*/
+  // tslint:disable-next-line: jsdoc-format
+  /** private heroesUrl = 'api/heroes';  // URL to web api*/
 
 /** GET heroes from the server */
 getAllHeroes(): Observable<Array<Hero>> {
@@ -57,18 +58,18 @@ addHero(hero: Hero): Observable<Hero> {
 /** DELETE: delete the hero from the server */
 deleteHero(id: string): Observable<Array<Hero>> {
   console.log(id);
-    return this.http.delete<Array<Hero>>(Endpoints.DELETE_ONE + id);
+  return this.http.delete<Array<Hero>>(Endpoints.DELETE_ONE + id);
 }
 
- /*/* GET heroes whose name contains search term *
+ /* GET heroes whose name contains search term */
 searchHeroes(term: string): Observable<Hero[]> {
   if (!term.trim()) {
     // if not search term, return empty hero array.
     return of([]);
   }
-  return this.http.get<Hero[]>(`${this.heroesUrl}/?name=${term}`).pipe(
-    tap(_ => this.log(`found heroes matching "${term}"`)),
+  return this.http.get<Array<Hero>>(Endpoints.GET_ONE + term).pipe(
+    tap(_ => console.log(`found heroes matching "${term}"`)),
     catchError(this.handleError<Hero[]>('searchHeroes', []))
   );
-}*/
+}
 }

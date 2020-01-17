@@ -18,7 +18,6 @@ export class HeroesComponent implements OnInit {
     this.getHeroes();
   }
 
-
   getHeroes(): void {
     this.heroService.getAllHeroes()
         .subscribe(heroes => this.heroes = heroes);
@@ -31,6 +30,9 @@ export class HeroesComponent implements OnInit {
       .subscribe(hero => {
         this.heroes.push(hero);
       });
+  }
+  refresh(): void {
+    window.location.reload();
   }
 
   delete(id: string): void {
